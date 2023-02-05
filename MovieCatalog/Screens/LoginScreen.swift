@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginScreen: View {
     
     @ObservedObject var viewModel: LoginScreenViewModel
-    
+
     var body: some View {
         ZStack {
             VStack {
@@ -26,8 +26,10 @@ struct LoginScreen: View {
                 }
                 Spacer()
                 VStack(spacing: 8) {
-                    OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Войти")
-                    BasicButtonView(text: "Регистрация")
+                    NavigationLink(value: "lalala") {
+                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Войти") {}
+                    }
+                    BasicButtonView(text: "Регистрация") {}
                 }.padding([.leading, .trailing], 16)
                     .padding(.bottom, 4)
             }

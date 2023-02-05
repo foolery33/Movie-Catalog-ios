@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SwiftUIFlowLayout",
+        "repositoryURL": "https://github.com/globulus/swiftui-flow-layout",
+        "state": {
+          "branch": null,
+          "revision": "de7da3440c3b87ba94adfa98c698828d7746a76d",
+          "version": "1.0.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

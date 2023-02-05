@@ -10,10 +10,7 @@ struct RegisterScreen: View {
             VStack(spacing: 0) {
                 Image("Logo").resizable().scaledToFit().frame(width: 147).padding(.top, 32)
                 Spacer().frame(height: 24)
-                Text("Регистрация")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(.redColor)
-                    .font(.system(size: 24, weight: .bold))
+                SectionText(text: "Регистрация")
                 ScrollView(showsIndicators: false) {
                     Spacer().frame(height: 16)
                     Group {
@@ -34,9 +31,9 @@ struct RegisterScreen: View {
                         SexButton(sexText: $viewModel.sexText)
                         Spacer().frame(height: 43)
                     }
-                    OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Зарегистрироваться")
+                    OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Зарегистрироваться") {}
                     Spacer().frame(height: 8)
-                    BasicButtonView(text: "У меня уже есть аккаунт")
+                    BasicButtonView(text: "У меня уже есть аккаунт") {}
                     Spacer().frame(height: 6)
                 }
                 Spacer()

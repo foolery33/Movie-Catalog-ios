@@ -36,7 +36,6 @@ struct DatePickerView: View {
 
             }
         }
-        
     }
     
 }
