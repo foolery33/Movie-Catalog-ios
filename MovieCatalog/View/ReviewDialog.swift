@@ -19,71 +19,78 @@ struct ReviewDialog: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.reviewDialogColor)
-            VStack(spacing: 16) {
-                Text("Оставить отзыв")
-                    .foregroundColor(.white)
-                    .font(.system(size: 24, weight: .bold))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                HStack(spacing: 0) {
-                    ForEach(0..<10, id: \.self) { star in
-                        HStack(spacing: 0) {
-                            Star(index: star, lastFilledStarIndex: $lastFilledStarIndex)
+            Color.black.ignoresSafeArea().opacity(0.6)
+                .onTapGesture {
+                    hideReviewDialog()
+                }
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.reviewDialogColor)
+                VStack(spacing: 16) {
+                    Text("Оставить отзыв")
+                        .foregroundColor(.white)
+                        .font(.system(size: 24, weight: .bold))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack(spacing: 0) {
+                        ForEach(0..<10, id: \.self) { star in
+                            HStack(spacing: 0) {
+                                Star(index: star, lastFilledStarIndex: $lastFilledStarIndex)
+                            }
                         }
                     }
-                }
-                ZStack(alignment: .topLeading) {
-                    RoundedRectangle(cornerRadius: 6).fill(.white)
-                    if(writtenText.isEmpty) {
-                        Text("Отзыв")
-                            .foregroundColor(.reviewDialogPlaceholderColor)
-                            .font(.custom("Montserrat", size: 13.7))
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 6).fill(.white)
+                        if(writtenText.isEmpty) {
+                            Text("Отзыв")
+                                .foregroundColor(.reviewDialogPlaceholderColor)
+                                .font(.custom("Montserrat", size: 13.7))
+                                .padding([.leading, .trailing], 9)
+                                .padding([.top, .bottom], 11)
+                        }
+                        TextField("", text: $writtenText, axis: .vertical)
                             .padding([.leading, .trailing], 9)
                             .padding([.top, .bottom], 11)
+                            .frame(height: 120, alignment: .topLeading)
+                            .foregroundColor(.reviewDialogTextColor)
+                            .font(.custom("Montserrat", size: 13.7))
+                            .multilineTextAlignment(.leading)
+                    }.frame(height: 120)
+                    HStack {
+                        Text("Анонимный отзыв")
+                            .foregroundColor(.white)
+                            .font(.system(size: 16, weight: .medium))
+                        Spacer()
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 4)
+                                .stroke(Color.grayFaded, lineWidth: 1)
+                            Image("Check")
+                                .opacity(showCheck ? 1 : 0)
+                                .frame(width: 22, height: 22)
+                        }
+                        .frame(width: 22, height: 22)
+                        .onTapGesture {
+                            showCheck.toggle()
+                        }
                     }
-                    TextField("", text: $writtenText, axis: .vertical)
-                        .padding([.leading, .trailing], 9)
-                        .padding([.top, .bottom], 11)
-                        .frame(height: 120, alignment: .topLeading)
-                        .foregroundColor(.reviewDialogTextColor)
-                        .font(.custom("Montserrat", size: 13.7))
-                        .multilineTextAlignment(.leading)
-                }.frame(height: 120)
-                HStack {
-                    Text("Анонимный отзыв")
-                        .foregroundColor(.white)
-                        .font(.system(size: 16, weight: .medium))
-                    Spacer()
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 4)
-                            .stroke(Color.grayFaded, lineWidth: 1)
-                        Image("Check")
-                            .opacity(showCheck ? 1 : 0)
-                            .frame(width: 22, height: 22)
+                    VStack(spacing: 8) {
+                        
+                        OutlinedButtonView(areFilledFields: $buttonPosition, text: "Сохранить")
+                            .onTapGesture {
+                                hideReviewDialog()
+                            }
+                        BasicButtonView(text: "Отмена")
+                            .onTapGesture {
+                                hideReviewDialog()
+                            }
                     }
-                    .frame(width: 22, height: 22)
-                    .onTapGesture {
-                        showCheck.toggle()
-                    }
-                }
-                VStack(spacing: 8) {
                     
-                    OutlinedButtonView(areFilledFields: $buttonPosition, text: "Сохранить") {
-                        hideReviewDialog()
-                    }
-                    BasicButtonView(text: "Отмена") {
-                        hideReviewDialog()
-                    }
-                    
                 }
-                
+                .padding(16)
             }
-            .padding(16)
+            .aspectRatio(contentMode: .fit)
+            .frame(maxWidth: .infinity)
+            .clipped()
         }
-        .aspectRatio(contentMode: .fit)
-        .frame(maxWidth: .infinity)
-        .clipped()
     }
     
     func hideReviewDialog() -> Void {
@@ -121,8 +128,9 @@ struct Star: View {
     }
 }
 
-//struct ReviewDialog_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ReviewDialog()
-//    }
-//}
+struct ReviewDialog_Previews: PreviewProvider {
+    @State static var show: Bool = true
+    static var previews: some View {
+        ReviewDialog(showReviewDialog: $show)
+    }
+}

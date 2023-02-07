@@ -24,5 +24,6 @@ extension Color {
     public static let reviewDialogTextColor: Color = Color(UIColor(red: 21/255, green: 13/255, blue: 11/255, alpha: 1))
     public static let reviewDialogBackgroundColor: Color = Color(UIColor(red: 0, green: 0, blue: 0, alpha: 0.6))
     public static let profileScreenBackgroundColor: Color = Color(UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1))
+    public static let bottomBarBackgroundColor: Color = Color(UIColor(red: 28/255, green: 26/255, blue: 25/255, alpha: 1))
     
 }

@@ -31,9 +31,14 @@ struct RegisterScreen: View {
                         SexButton(sexText: $viewModel.sexText)
                         Spacer().frame(height: 43)
                     }
-                    OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Зарегистрироваться") {}
+                    NavigationLink(destination: MainScreen()) {
+                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Зарегистрироваться")
+                    }
+                    .navigationBarBackButtonHidden(true)
                     Spacer().frame(height: 8)
-                    BasicButtonView(text: "У меня уже есть аккаунт") {}
+                    NavigationLink(destination: LoginScreen(viewModel: LoginScreenViewModel()).navigationBarBackButtonHidden(true)) {
+                        BasicButtonView(text: "У меня уже есть аккаунт")
+                    }
                     Spacer().frame(height: 6)
                 }
                 Spacer()

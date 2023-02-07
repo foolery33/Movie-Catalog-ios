@@ -6,8 +6,7 @@ class ProfileScreenViewModel: ObservableObject {
     
     var birthDateValue: Date {
         get {
-            
-            convertStringIntoDate(stringDate: model.birthDateText)
+            model.birthDateValue
         }
         set (newValue) {
             model.birthDateValue = newValue

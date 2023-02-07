@@ -44,11 +44,13 @@ struct MovieScreen: View {
                     }.opacity(1 - collapseProgress)
                     if(collapseProgress == 1) {
                         ZStack {
-                            Rectangle().fill(Color.movieScreenHeaderColor).edgesIgnoringSafeArea(.all).frame(width: .infinity).frame(height: 100)
+                            Rectangle().fill(Color.movieScreenHeaderColor).edgesIgnoringSafeArea(.all).frame(height: 100)
                             VStack(spacing: 0) {
                                 Spacer().frame(height: 44)
                                 HStack {
-                                    Image("Arrow")
+                                    NavigationLink(destination: MainScreen()) {
+                                        Image("Arrow")
+                                    }
                                     Spacer()
                                     Text(filmName)
                                         .foregroundColor(.white)
@@ -132,7 +134,6 @@ struct MovieScreen: View {
             .edgesIgnoringSafeArea(.all)
             .preferredColorScheme(.dark)
             .background(Color.backgroundColor)
-            .opacity(showReviewDialog ? 0.6 : 1)
             
             if(showReviewDialog) {
                 ReviewDialog(showReviewDialog: $showReviewDialog)

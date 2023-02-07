@@ -40,8 +40,10 @@ struct DatePickerView: View {
     
 }
 
-//struct DatePickerView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DatePickerView()
-//    }
-//}
+struct DatePickerView_Previews: PreviewProvider {
+    @State static var dateValue = Date()
+    @State static var dateText: String = ""
+    static var previews: some View {
+        DatePickerView(dateValue: $dateValue, dateText: $dateText, placeholderText: "Date")
+    }
+}

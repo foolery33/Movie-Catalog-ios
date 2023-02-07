@@ -21,15 +21,15 @@
 		843DB1FB297D40760024B207 /* OutlinedTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DB1FA297D40760024B207 /* OutlinedTextFieldView.swift */; };
 		843DB1FE297D48D90024B207 /* LoginScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DB1FD297D48D90024B207 /* LoginScreenViewModel.swift */; };
 		843DB201297D89E00024B207 /* LoginScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DB200297D89E00024B207 /* LoginScreenModel.swift */; };
+		8452A3FE29900EA100F2A734 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 8452A3FD29900EA100F2A734 /* ScalingHeaderScrollView */; };
 		845E9A49298CFDC30052594F /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E9A48298CFDC30052594F /* ProfileScreen.swift */; };
 		845E9A4B298D14AD0052594F /* ProfileScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E9A4A298D14AD0052594F /* ProfileScreenViewModel.swift */; };
 		845E9A4D298D15270052594F /* ProfileScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E9A4C298D15270052594F /* ProfileScreenModel.swift */; };
-		84A8E405298AAD8300F55894 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 84A8E404298AAD8300F55894 /* ScalingHeaderScrollView */; };
-		84A8E407298AAD8B00F55894 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 84A8E406298AAD8B00F55894 /* Introspect */; };
 		84A91C89297E47A000101CFB /* OutlinedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C88297E47A000101CFB /* OutlinedButtonView.swift */; };
 		84A91C8E297E79FF00101CFB /* GeneralScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */; };
 		84B0BAD32980D9DC00B66EE7 /* SecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */; };
 		84B0BAD52980E84D00B66EE7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */; };
+		84B999272990DF6C006750BE /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B999262990DF6C006750BE /* BottomBar.swift */; };
 		84B9F94D298BB5B900D70055 /* ReviewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9F94C298BB5B900D70055 /* ReviewDialog.swift */; };
 		84BC26B62982D90600D2BF69 /* SexButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC26B52982D90600D2BF69 /* SexButton.swift */; };
 		84BE59402983E8C800239548 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BE593F2983E8C800239548 /* RoundedCorner.swift */; };
@@ -82,13 +82,11 @@
 		845E9A48298CFDC30052594F /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
 		845E9A4A298D14AD0052594F /* ProfileScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewModel.swift; sourceTree = "<group>"; };
 		845E9A4C298D15270052594F /* ProfileScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenModel.swift; sourceTree = "<group>"; };
-		84A8E3F8298AAA3700F55894 /* Libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Libraries; path = MovieCatalog/Libraries; sourceTree = "<group>"; };
-		84A8E3FE298AAC9B00F55894 /* ScalingHeaderScrollView */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ScalingHeaderScrollView; path = MovieCatalog/Libraries/ScalingHeaderScrollView; sourceTree = "<group>"; };
-		84A8E3FF298AACB300F55894 /* SwiftUI-Introspect */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "SwiftUI-Introspect"; path = "MovieCatalog/Libraries/SwiftUI-Introspect"; sourceTree = "<group>"; };
 		84A91C88297E47A000101CFB /* OutlinedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButtonView.swift; sourceTree = "<group>"; };
 		84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenProtocol.swift; sourceTree = "<group>"; };
 		84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
 		84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		84B999262990DF6C006750BE /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		84B9F94C298BB5B900D70055 /* ReviewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDialog.swift; sourceTree = "<group>"; };
 		84BC26B52982D90600D2BF69 /* SexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexButton.swift; sourceTree = "<group>"; };
 		84BE593F2983E8C800239548 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
@@ -108,8 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84CAB7AB2986936C00E2ED60 /* SwiftUIFlowLayout in Frameworks */,
-				84A8E407298AAD8B00F55894 /* Introspect in Frameworks */,
-				84A8E405298AAD8300F55894 /* ScalingHeaderScrollView in Frameworks */,
+				8452A3FE29900EA100F2A734 /* ScalingHeaderScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +170,7 @@
 				84CAB7A52986425700E2ED60 /* GalleryElement.swift */,
 				84CAB7AC2986D7A600E2ED60 /* ReviewView.swift */,
 				84B9F94C298BB5B900D70055 /* ReviewDialog.swift */,
+				84B999262990DF6C006750BE /* BottomBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,12 +178,11 @@
 		843D892A2965C83700CA3466 = {
 			isa = PBXGroup;
 			children = (
-				84A8E3FD298AAC9B00F55894 /* Packages */,
 				843D89352965C83700CA3466 /* MovieCatalog */,
 				843D89462965C83800CA3466 /* MovieCatalogTests */,
 				843D89502965C83800CA3466 /* MovieCatalogUITests */,
 				843D89342965C83700CA3466 /* Products */,
-				84A8E3F7298AAA3700F55894 /* Frameworks */,
+				8452A3FC29900EA100F2A734 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,21 +250,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		84A8E3F7298AAA3700F55894 /* Frameworks */ = {
+		8452A3FC29900EA100F2A734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				84A8E3F8298AAA3700F55894 /* Libraries */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		84A8E3FD298AAC9B00F55894 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				84A8E3FE298AAC9B00F55894 /* ScalingHeaderScrollView */,
-				84A8E3FF298AACB300F55894 /* SwiftUI-Introspect */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		84A91C8C297E79D800101CFB /* Protocols */ = {
@@ -296,8 +283,7 @@
 			name = MovieCatalog;
 			packageProductDependencies = (
 				84CAB7AA2986936C00E2ED60 /* SwiftUIFlowLayout */,
-				84A8E404298AAD8300F55894 /* ScalingHeaderScrollView */,
-				84A8E406298AAD8B00F55894 /* Introspect */,
+				8452A3FD29900EA100F2A734 /* ScalingHeaderScrollView */,
 			);
 			productName = MovieCatalog;
 			productReference = 843D89332965C83700CA3466 /* MovieCatalog.app */;
@@ -373,6 +359,7 @@
 			mainGroup = 843D892A2965C83700CA3466;
 			packageReferences = (
 				84CAB7A92986936C00E2ED60 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
+				8452A3F9298FEC7F00F2A734 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
 			);
 			productRefGroup = 843D89342965C83700CA3466 /* Products */;
 			projectDirPath = "";
@@ -420,6 +407,7 @@
 				84CAB7A4298641FA00E2ED60 /* FavouriteCard.swift in Sources */,
 				84C8DE70298036490068DA23 /* RegisterScreenViewModel.swift in Sources */,
 				84BC26B62982D90600D2BF69 /* SexButton.swift in Sources */,
+				84B999272990DF6C006750BE /* BottomBar.swift in Sources */,
 				845E9A49298CFDC30052594F /* ProfileScreen.swift in Sources */,
 				84CAB7A829866BDC00E2ED60 /* MovieScreen.swift in Sources */,
 				843D89392965C83700CA3466 /* ContentView.swift in Sources */,
@@ -763,6 +751,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8452A3F9298FEC7F00F2A734 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ScalingHeaderScrollView.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		84CAB7A92986936C00E2ED60 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/globulus/swiftui-flow-layout";
@@ -774,13 +770,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		84A8E404298AAD8300F55894 /* ScalingHeaderScrollView */ = {
+		8452A3FD29900EA100F2A734 /* ScalingHeaderScrollView */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 8452A3F9298FEC7F00F2A734 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
 			productName = ScalingHeaderScrollView;
-		};
-		84A8E406298AAD8B00F55894 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Introspect;
 		};
 		84CAB7AA2986936C00E2ED60 /* SwiftUIFlowLayout */ = {
 			isa = XCSwiftPackageProductDependency;

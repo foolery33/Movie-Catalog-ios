@@ -11,7 +11,6 @@ struct OutlinedButtonView: View {
     
     @Binding var areFilledFields: Bool
     var text: String
-    var action: () -> Void
     
     var strokeColor: Color {
         areFilledFields ? Color.redColor : Color.strokeColor
@@ -26,17 +25,13 @@ struct OutlinedButtonView: View {
     }
     
     var body: some View {
-        Button {
-            action()
-        } label: {
-            Text(text)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(textColor)
-                .padding([.top, .bottom], 12)
-                .font(.system(size: 16, weight: .medium))
-                .overlay(RoundedRectangle(cornerRadius: 4).stroke(strokeColor, lineWidth: 1).padding([.leading, .trailing], 0.3))
-                .background(RoundedRectangle(cornerRadius: 4).fill(fillColor).frame(maxWidth: .infinity))
-        }
+        Text(text)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(textColor)
+            .padding([.top, .bottom], 12)
+            .font(.system(size: 16, weight: .medium))
+            .overlay(RoundedRectangle(cornerRadius: 4).stroke(strokeColor, lineWidth: 1).padding([.leading, .trailing], 0.3))
+            .background(RoundedRectangle(cornerRadius: 4).fill(fillColor).frame(maxWidth: .infinity))
     }
     
 }

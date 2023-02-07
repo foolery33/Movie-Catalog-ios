@@ -13,6 +13,8 @@ struct LoginScreenModel {
     var passwordText: String = ""
     var areFilledFields: Bool = false
     
+    var pressedSignInButton: Bool = false
+    
     mutating func changeFieldsValues(fieldType: String, text: String) {
         switch fieldType {
         case "Логин":

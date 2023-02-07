@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MovieCatalogApp: App {
-    var body: some Scene {
+var body: some Scene {
         WindowGroup {
             ContentView()
         }

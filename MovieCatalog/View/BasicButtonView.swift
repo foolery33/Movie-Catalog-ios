@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct BasicButtonView: View {
+    
     var text: String
-    var action: () -> Void
+    
     var body: some View {
-        Button {
-            action()
-        } label: {
-            Text(text)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(.redColor)
-                .font(.system(size: 16, weight: .medium))
-                .padding([.top, .bottom], 6)
-        }
+        Text(text)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(.redColor)
+            .font(.system(size: 16, weight: .medium))
+            .padding([.top, .bottom], 6)
     }
 }
 
 struct BasicButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        BasicButtonView(text: "Register", action: {})
+        BasicButtonView(text: "Register")
     }
 }

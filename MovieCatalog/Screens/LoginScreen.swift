@@ -26,10 +26,12 @@ struct LoginScreen: View {
                 }
                 Spacer()
                 VStack(spacing: 8) {
-                    NavigationLink(value: "lalala") {
-                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Войти") {}
+                    NavigationLink(destination: MainScreen()) {
+                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Войти")
                     }
-                    BasicButtonView(text: "Регистрация") {}
+                    NavigationLink(destination: RegisterScreen(viewModel: RegisterScreenViewModel())) {
+                        BasicButtonView(text: "Регистрация")
+                    }
                 }.padding([.leading, .trailing], 16)
                     .padding(.bottom, 4)
             }

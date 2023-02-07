@@ -21,7 +21,7 @@ struct GalleryElement: View {
                 .resizable()
                 .frame(width: 100, height: 144)
                 .aspectRatio(contentMode: .fit)
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(filmName)
                         .foregroundColor(.white)
@@ -32,7 +32,7 @@ struct GalleryElement: View {
                     Text(filmGenres)
                         .foregroundColor(.white)
                         .font(.system(size: 14, weight: .regular))
-                    Spacer().frame(height: 44)
+                    Spacer().frame(height: 42)
                     Text(String(rating))
                         .foregroundColor(.white)
                         .font(.system(size: 16, weight: .medium))
@@ -40,10 +40,10 @@ struct GalleryElement: View {
                         .background(RoundedRectangle(cornerRadius: 16).fill(.green).frame(width: 56))
                         .frame(width: 56)
                 }
-                .frame(width: 144)
+                .frame(maxWidth: .infinity, maxHeight: 144, alignment: .leading)
             }
             Spacer()
-        }.frame(maxWidth: .infinity).preferredColorScheme(.dark)
+        }.preferredColorScheme(.dark)
     }
 }
 

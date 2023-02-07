@@ -11,6 +11,15 @@ class LoginScreenViewModel: ObservableObject {
     
     @Published private var model: LoginScreenModel = LoginScreenModel()
     
+    var pressedSignInButton: Bool {
+        get {
+            model.pressedSignInButton
+        }
+        set (newValue) {
+            model.pressedSignInButton.toggle()
+        }
+    }
+    
     var loginText: String {
         get {
             model.loginText

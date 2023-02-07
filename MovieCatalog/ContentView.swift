@@ -3,7 +3,9 @@ import ScalingHeaderScrollView
 
 struct ContentView: View {
     var body: some View {
-        LoginScreen(viewModel: LoginScreenViewModel())
+        NavigationView {
+            LoginScreen(viewModel: LoginScreenViewModel())
+        }
     }
 }
 
