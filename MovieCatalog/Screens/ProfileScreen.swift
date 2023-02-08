@@ -76,7 +76,7 @@ struct ProfileScreen: View {
                     }
                     Spacer().frame(height: 48)
                     VStack(spacing: 8) {
-                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Сохранить")
+                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Сохранить") {}
                         BasicButtonView(text: "Выйти из аккаунта")
                     }
                     Spacer().frame(height: 85)

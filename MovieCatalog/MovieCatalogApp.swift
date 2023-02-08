@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct MovieCatalogApp: App {
-var body: some Scene {
+    
+    @StateObject var viewModel: GeneralViewModel = GeneralViewModel()
+    
+    var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                LoginScreen()
+            }
+            .environmentObject(viewModel)
         }
     }
 }

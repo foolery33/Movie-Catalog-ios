@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RegisterScreen: View {
     
-    @ObservedObject var viewModel: RegisterScreenViewModel
+    @EnvironmentObject var viewModel: GeneralViewModel
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -14,31 +14,32 @@ struct RegisterScreen: View {
                 ScrollView(showsIndicators: false) {
                     Spacer().frame(height: 16)
                     Group {
-                        OutlinedTextFieldView(writtenText: $viewModel.loginText, placeholderText: "Логин")
+                        OutlinedTextFieldView(writtenText: $viewModel.registerScreenVM.loginText, placeholderText: "Логин")
                         Spacer().frame(height: 16)
-                        OutlinedTextFieldView(writtenText: $viewModel.emailText, placeholderText: "E-mail")
+                        OutlinedTextFieldView(writtenText: $viewModel.registerScreenVM.emailText, placeholderText: "E-mail")
                         Spacer().frame(height: 16)
-                        OutlinedTextFieldView(writtenText: $viewModel.nameText, placeholderText: "Имя")
+                        OutlinedTextFieldView(writtenText: $viewModel.registerScreenVM.nameText, placeholderText: "Имя")
                         Spacer().frame(height: 16)
-                        SecureFieldView(writtenText: $viewModel.passwordText, placeholderText: "Пароль")
+                        SecureFieldView(writtenText: $viewModel.registerScreenVM.passwordText, placeholderText: "Пароль")
                         Spacer().frame(height: 16)
-                        SecureFieldView(writtenText: $viewModel.confirmPasswordText, placeholderText: "Подтвердите пароль")
+                        SecureFieldView(writtenText: $viewModel.registerScreenVM.confirmPasswordText, placeholderText: "Подтвердите пароль")
                     }
                     Group {
                         Spacer().frame(height: 16)
-                        DatePickerView(dateValue: $viewModel.birthDateValue, dateText: $viewModel.birthDateText, placeholderText: "Дата рождения")
+                        DatePickerView(dateValue: $viewModel.registerScreenVM.birthDateValue, dateText: $viewModel.registerScreenVM.birthDateText, placeholderText: "Дата рождения")
                         Spacer().frame(height: 16)
-                        SexButton(sexText: $viewModel.sexText)
+                        SexButton(sexText: $viewModel.registerScreenVM.sexText)
                         Spacer().frame(height: 43)
                     }
                     NavigationLink(destination: MainScreen()) {
-                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Зарегистрироваться")
+                        OutlinedButtonView(areFilledFields: $viewModel.registerScreenVM.areFilledFields, text: "Зарегистрироваться"){}
                     }
                     .navigationBarBackButtonHidden(true)
                     Spacer().frame(height: 8)
-                    NavigationLink(destination: LoginScreen(viewModel: LoginScreenViewModel()).navigationBarBackButtonHidden(true)) {
+                    NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true)) {
                         BasicButtonView(text: "У меня уже есть аккаунт")
                     }
+                    .environmentObject(viewModel)
                     Spacer().frame(height: 6)
                 }
                 Spacer()
@@ -52,6 +53,9 @@ struct RegisterScreen: View {
 
 struct RegisterScreen_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterScreen(viewModel: RegisterScreenViewModel())
+        NavigationView {
+            RegisterScreen()
+        }
+        .environmentObject(GeneralViewModel())
     }
 }

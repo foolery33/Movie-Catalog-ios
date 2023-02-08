@@ -75,7 +75,7 @@ struct ReviewDialog: View {
                     VStack(spacing: 8) {
                         
                         OutlinedButtonView(areFilledFields: $buttonPosition, text: "Сохранить")
-                            .onTapGesture {
+                             {
                                 hideReviewDialog()
                             }
                         BasicButtonView(text: "Отмена")

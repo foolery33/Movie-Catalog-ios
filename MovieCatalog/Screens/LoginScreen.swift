@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct LoginScreen: View {
     
-    @ObservedObject var viewModel: LoginScreenViewModel
-
+    @EnvironmentObject var viewModel: GeneralViewModel
+    @State var isPresenting = false
+    
     var body: some View {
         ZStack {
             VStack {
@@ -18,20 +20,42 @@ struct LoginScreen: View {
                     VStack {
                         Image("Logo").padding(.top, 32)
                         Spacer().frame(height: 64)
-                        OutlinedTextFieldView(writtenText: $viewModel.loginText, placeholderText: "Логин")
+                        OutlinedTextFieldView(writtenText: $viewModel.loginScreenVM.loginText, placeholderText: "Логин")
                         Spacer().frame(height: 16)
-                        SecureFieldView(writtenText: $viewModel.passwordText, placeholderText: "Пароль")
+                        SecureFieldView(writtenText: $viewModel.loginScreenVM.passwordText, placeholderText: "Пароль")
                         
                     }.padding([.leading, .trailing], 16)
                 }
                 Spacer()
                 VStack(spacing: 8) {
-                    NavigationLink(destination: MainScreen()) {
-                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Войти")
+                    
+                    NavigationLink(destination: MainScreen(), isActive: $viewModel.loginScreenVM.pressedSignInButton) {
+                        EmptyView()
                     }
-                    NavigationLink(destination: RegisterScreen(viewModel: RegisterScreenViewModel())) {
+                    OutlinedButtonView(areFilledFields: $viewModel.loginScreenVM.areFilledFields, text: "Войти") {
+                        viewModel.authVM.login(userName: viewModel.loginScreenVM.loginText, password: viewModel.loginScreenVM.passwordText, isPressedButton: $viewModel.loginScreenVM.pressedSignInButton) { response in
+                            
+                            switch(response) {
+                            case 200:
+                                viewModel.loginScreenVM.pressedSignInButton = true
+                            case 400:
+                                viewModel.loginScreenVM.errorToastMessage = "Incorrect login or password"
+                                isPresenting = true
+                            default:
+                                viewModel.loginScreenVM.errorToastMessage = "Some unexpected error. Please contact developer"
+                                isPresenting = true
+                            }
+
+                        }
+                        
+                    }
+                    .toast(isPresenting: $isPresenting) {
+                        AlertToast(type: .regular, title: viewModel.loginScreenVM.errorToastMessage)
+                    }
+                    NavigationLink(destination: RegisterScreen()) {
                         BasicButtonView(text: "Регистрация")
                     }
+                    .environmentObject(viewModel)
                 }.padding([.leading, .trailing], 16)
                     .padding(.bottom, 4)
             }
@@ -43,6 +67,9 @@ struct LoginScreen: View {
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginScreen(viewModel: LoginScreenViewModel())
+        NavigationView {
+            LoginScreen()
+        }
+        .environmentObject(GeneralViewModel())
     }
 }

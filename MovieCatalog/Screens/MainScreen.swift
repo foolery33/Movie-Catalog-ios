@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainScreen: View {
     
+    @EnvironmentObject var viewModel: GeneralViewModel
     @State var itemPressed: Int = 0
     @State var firstVisibleIndex: Int = 0
     @State var visibleIndex: Set<Int> = [0]

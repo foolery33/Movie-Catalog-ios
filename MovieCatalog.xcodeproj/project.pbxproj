@@ -29,6 +29,14 @@
 		84A91C8E297E79FF00101CFB /* GeneralScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */; };
 		84B0BAD32980D9DC00B66EE7 /* SecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */; };
 		84B0BAD52980E84D00B66EE7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */; };
+		84B3FA88299295FE008341AB /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA87299295FD008341AB /* AuthViewModel.swift */; };
+		84B3FA8B2992963E008341AB /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84B3FA8A2992963E008341AB /* Alamofire */; };
+		84B3FA8D29929663008341AB /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA8C29929663008341AB /* TokenModel.swift */; };
+		84B3FA8F299296AC008341AB /* CustomRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA8E299296AC008341AB /* CustomRequestInterceptor.swift */; };
+		84B3FA9129929737008341AB /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA9029929737008341AB /* TokenManager.swift */; };
+		84B3FA9329929FCA008341AB /* GeneralViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA9229929FCA008341AB /* GeneralViewModel.swift */; };
+		84B3FA962992B26A008341AB /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 84B3FA952992B26A008341AB /* SwiftKeychainWrapper */; };
+		84B3FA992992B811008341AB /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 84B3FA982992B811008341AB /* AlertToast */; };
 		84B999272990DF6C006750BE /* BottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B999262990DF6C006750BE /* BottomBar.swift */; };
 		84B9F94D298BB5B900D70055 /* ReviewDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9F94C298BB5B900D70055 /* ReviewDialog.swift */; };
 		84BC26B62982D90600D2BF69 /* SexButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BC26B52982D90600D2BF69 /* SexButton.swift */; };
@@ -86,6 +94,11 @@
 		84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenProtocol.swift; sourceTree = "<group>"; };
 		84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
 		84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		84B3FA87299295FD008341AB /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		84B3FA8C29929663008341AB /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		84B3FA8E299296AC008341AB /* CustomRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRequestInterceptor.swift; sourceTree = "<group>"; };
+		84B3FA9029929737008341AB /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		84B3FA9229929FCA008341AB /* GeneralViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewModel.swift; sourceTree = "<group>"; };
 		84B999262990DF6C006750BE /* BottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBar.swift; sourceTree = "<group>"; };
 		84B9F94C298BB5B900D70055 /* ReviewDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDialog.swift; sourceTree = "<group>"; };
 		84BC26B52982D90600D2BF69 /* SexButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexButton.swift; sourceTree = "<group>"; };
@@ -105,7 +118,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B3FA8B2992963E008341AB /* Alamofire in Frameworks */,
 				84CAB7AB2986936C00E2ED60 /* SwiftUIFlowLayout in Frameworks */,
+				84B3FA962992B26A008341AB /* SwiftKeychainWrapper in Frameworks */,
+				84B3FA992992B811008341AB /* AlertToast in Frameworks */,
 				8452A3FE29900EA100F2A734 /* ScalingHeaderScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +198,6 @@
 				843D89462965C83800CA3466 /* MovieCatalogTests */,
 				843D89502965C83800CA3466 /* MovieCatalogUITests */,
 				843D89342965C83700CA3466 /* Products */,
-				8452A3FC29900EA100F2A734 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +214,7 @@
 		843D89352965C83700CA3466 /* MovieCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				84B3FA85299295E7008341AB /* Network */,
 				84A91C8C297E79D800101CFB /* Protocols */,
 				843DB1FF297D89B50024B207 /* Model */,
 				843DB1FC297D48AC0024B207 /* ViewModel */,
@@ -236,6 +252,7 @@
 				843DB1FD297D48D90024B207 /* LoginScreenViewModel.swift */,
 				84C8DE6F298036490068DA23 /* RegisterScreenViewModel.swift */,
 				845E9A4A298D14AD0052594F /* ProfileScreenViewModel.swift */,
+				84B3FA9229929FCA008341AB /* GeneralViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -250,19 +267,31 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8452A3FC29900EA100F2A734 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		84A91C8C297E79D800101CFB /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		84B3FA85299295E7008341AB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				84B3FA86299295EC008341AB /* Auth */,
+				84B3FA8E299296AC008341AB /* CustomRequestInterceptor.swift */,
+				84B3FA9029929737008341AB /* TokenManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		84B3FA86299295EC008341AB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				84B3FA87299295FD008341AB /* AuthViewModel.swift */,
+				84B3FA8C29929663008341AB /* TokenModel.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,6 +313,9 @@
 			packageProductDependencies = (
 				84CAB7AA2986936C00E2ED60 /* SwiftUIFlowLayout */,
 				8452A3FD29900EA100F2A734 /* ScalingHeaderScrollView */,
+				84B3FA8A2992963E008341AB /* Alamofire */,
+				84B3FA952992B26A008341AB /* SwiftKeychainWrapper */,
+				84B3FA982992B811008341AB /* AlertToast */,
 			);
 			productName = MovieCatalog;
 			productReference = 843D89332965C83700CA3466 /* MovieCatalog.app */;
@@ -360,6 +392,9 @@
 			packageReferences = (
 				84CAB7A92986936C00E2ED60 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
 				8452A3F9298FEC7F00F2A734 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */,
+				84B3FA892992963E008341AB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				84B3FA942992B26A008341AB /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				84B3FA972992B811008341AB /* XCRemoteSwiftPackageReference "AlertToast" */,
 			);
 			productRefGroup = 843D89342965C83700CA3466 /* Products */;
 			projectDirPath = "";
@@ -405,6 +440,7 @@
 			files = (
 				84C8DE6E297FDC6B0068DA23 /* RegisterScreen.swift in Sources */,
 				84CAB7A4298641FA00E2ED60 /* FavouriteCard.swift in Sources */,
+				84B3FA9329929FCA008341AB /* GeneralViewModel.swift in Sources */,
 				84C8DE70298036490068DA23 /* RegisterScreenViewModel.swift in Sources */,
 				84BC26B62982D90600D2BF69 /* SexButton.swift in Sources */,
 				84B999272990DF6C006750BE /* BottomBar.swift in Sources */,
@@ -412,10 +448,13 @@
 				84CAB7A829866BDC00E2ED60 /* MovieScreen.swift in Sources */,
 				843D89392965C83700CA3466 /* ContentView.swift in Sources */,
 				842760D3297A87E200B8B679 /* Colors.swift in Sources */,
+				84B3FA9129929737008341AB /* TokenManager.swift in Sources */,
+				84B3FA8F299296AC008341AB /* CustomRequestInterceptor.swift in Sources */,
 				84B9F94D298BB5B900D70055 /* ReviewDialog.swift in Sources */,
 				84A91C8E297E79FF00101CFB /* GeneralScreenProtocol.swift in Sources */,
 				840D805C2984077600690A2E /* MainScreen.swift in Sources */,
 				843D89372965C83700CA3466 /* MovieCatalogApp.swift in Sources */,
+				84B3FA8D29929663008341AB /* TokenModel.swift in Sources */,
 				84B0BAD52980E84D00B66EE7 /* DatePickerView.swift in Sources */,
 				84CAB7AD2986D7A600E2ED60 /* ReviewView.swift in Sources */,
 				84BE59402983E8C800239548 /* RoundedCorner.swift in Sources */,
@@ -427,6 +466,7 @@
 				84C8DE6C297FD8BD0068DA23 /* BasicButtonView.swift in Sources */,
 				84A91C89297E47A000101CFB /* OutlinedButtonView.swift in Sources */,
 				843DB1FB297D40760024B207 /* OutlinedTextFieldView.swift in Sources */,
+				84B3FA88299295FE008341AB /* AuthViewModel.swift in Sources */,
 				84B0BAD32980D9DC00B66EE7 /* SecureFieldView.swift in Sources */,
 				84C8DE72298036BD0068DA23 /* RegisterScreenModel.swift in Sources */,
 				84CAB7A62986425700E2ED60 /* GalleryElement.swift in Sources */,
@@ -759,6 +799,30 @@
 				kind = branch;
 			};
 		};
+		84B3FA892992963E008341AB /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		84B3FA942992B26A008341AB /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		84B3FA972992B811008341AB /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		84CAB7A92986936C00E2ED60 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/globulus/swiftui-flow-layout";
@@ -774,6 +838,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8452A3F9298FEC7F00F2A734 /* XCRemoteSwiftPackageReference "ScalingHeaderScrollView" */;
 			productName = ScalingHeaderScrollView;
+		};
+		84B3FA8A2992963E008341AB /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B3FA892992963E008341AB /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		84B3FA952992B26A008341AB /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B3FA942992B26A008341AB /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+		84B3FA982992B811008341AB /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84B3FA972992B811008341AB /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
 		};
 		84CAB7AA2986936C00E2ED60 /* SwiftUIFlowLayout */ = {
 			isa = XCSwiftPackageProductDependency;

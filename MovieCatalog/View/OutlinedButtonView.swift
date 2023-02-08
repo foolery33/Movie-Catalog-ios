@@ -11,6 +11,7 @@ struct OutlinedButtonView: View {
     
     @Binding var areFilledFields: Bool
     var text: String
+    var action: () -> Void
     
     var strokeColor: Color {
         areFilledFields ? Color.redColor : Color.strokeColor
@@ -32,6 +33,9 @@ struct OutlinedButtonView: View {
             .font(.system(size: 16, weight: .medium))
             .overlay(RoundedRectangle(cornerRadius: 4).stroke(strokeColor, lineWidth: 1).padding([.leading, .trailing], 0.3))
             .background(RoundedRectangle(cornerRadius: 4).fill(fillColor).frame(maxWidth: .infinity))
+            .onTapGesture {
+                action()
+            }
     }
     
 }

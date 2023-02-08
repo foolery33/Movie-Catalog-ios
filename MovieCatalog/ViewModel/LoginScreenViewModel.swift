@@ -9,14 +9,33 @@ import SwiftUI
 
 class LoginScreenViewModel: ObservableObject {
     
-    @Published private var model: LoginScreenModel = LoginScreenModel()
+    @Published var model: LoginScreenModel = LoginScreenModel()
+    
+    var isPresenting: Bool {
+        get {
+            model.isPresenting
+        }
+        set(newValue) {
+            model.isPresenting = newValue
+        }
+    }
+    
+    var errorToastMessage: String {
+        get {
+            model.errorToastMessage
+        }
+        set (newValue) {
+            model.errorToastMessage = newValue
+        }
+        
+    }
     
     var pressedSignInButton: Bool {
         get {
             model.pressedSignInButton
         }
         set (newValue) {
-            model.pressedSignInButton.toggle()
+            model.pressedSignInButton = newValue
         }
     }
     
@@ -25,7 +44,7 @@ class LoginScreenViewModel: ObservableObject {
             model.loginText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Логин", newValue: newValue)
+            model.loginText = newValue
         }
     }
     var passwordText: String {
@@ -33,21 +52,21 @@ class LoginScreenViewModel: ObservableObject {
             model.passwordText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Пароль", newValue: newValue)
+            model.passwordText = newValue
         }
     }
     
     var areFilledFields: Bool {
         get {
-            model.areFilledFields
+            model.areFilled()
         }
         set (newValue) {
             model.areFilledFields = newValue
         }
     }
     
-    func changeFieldsValues(fieldType: String, newValue: String) {
-        model.changeFieldsValues(fieldType: fieldType, text: newValue)
-    }
+//    func changeFieldsValues(fieldType: String, newValue: String) {
+//        model.changeFieldsValues(fieldType: fieldType, text: newValue)
+//    }
     
 }
