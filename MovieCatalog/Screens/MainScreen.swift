@@ -82,6 +82,10 @@ struct MainScreen: View {
             BottomBar(itemPressed: $itemPressed)
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            print("isPressedLogin: ", viewModel.loginScreenVM.pressedSignInButton)
+            print("isPressedRegister: ", viewModel.registerScreenVM.isPressedButton)
+        }
     }
     
     private func isInView(innerRect:CGRect, isIn outerProxy:GeometryProxy) -> Bool {

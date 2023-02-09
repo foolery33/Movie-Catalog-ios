@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		840D805C2984077600690A2E /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D805B2984077600690A2E /* MainScreen.swift */; };
 		840D805E2984279300690A2E /* SectionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D805D2984279300690A2E /* SectionText.swift */; };
+		841BAFC62994CB6F006B095E /* RegisterParametersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841BAFC52994CB6F006B095E /* RegisterParametersModel.swift */; };
 		842760CF297A5FB900B8B679 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842760CE297A5FB900B8B679 /* LoginScreen.swift */; };
 		842760D3297A87E200B8B679 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842760D2297A87E200B8B679 /* Colors.swift */; };
 		84276112297A93EB00B8B679 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84276111297A93EB00B8B679 /* Preview Assets.xcassets */; };
@@ -72,6 +73,7 @@
 /* Begin PBXFileReference section */
 		840D805B2984077600690A2E /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		840D805D2984279300690A2E /* SectionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionText.swift; sourceTree = "<group>"; };
+		841BAFC52994CB6F006B095E /* RegisterParametersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterParametersModel.swift; sourceTree = "<group>"; };
 		842760CE297A5FB900B8B679 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		842760D2297A87E200B8B679 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		84276111297A93EB00B8B679 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				84B3FA87299295FD008341AB /* AuthViewModel.swift */,
 				84B3FA8C29929663008341AB /* TokenModel.swift */,
+				841BAFC52994CB6F006B095E /* RegisterParametersModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				84B3FA8F299296AC008341AB /* CustomRequestInterceptor.swift in Sources */,
 				84B9F94D298BB5B900D70055 /* ReviewDialog.swift in Sources */,
 				84A91C8E297E79FF00101CFB /* GeneralScreenProtocol.swift in Sources */,
+				841BAFC62994CB6F006B095E /* RegisterParametersModel.swift in Sources */,
 				840D805C2984077600690A2E /* MainScreen.swift in Sources */,
 				843D89372965C83700CA3466 /* MovieCatalogApp.swift in Sources */,
 				84B3FA8D29929663008341AB /* TokenModel.swift in Sources */,

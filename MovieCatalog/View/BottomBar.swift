@@ -14,7 +14,7 @@ struct BottomBar: View {
     var body: some View {
         HStack(spacing: 0) {
             NavigationLink(destination: MainScreen()) {
-                BottomBarItem(image: Image("TV"), text: "Главное", isItemPressed: itemPressed == 0)
+                BottomBarItem(image: Image("tv"), text: "Главное", isItemPressed: itemPressed == 0)
             }
             NavigationLink(destination: ProfileScreen(viewModel: ProfileScreenViewModel()).navigationBarBackButtonHidden(true)) {
                 BottomBarItem(image: Image("Person"), text: "Профиль", isItemPressed: itemPressed == 1)

@@ -11,7 +11,6 @@ import AlertToast
 struct LoginScreen: View {
     
     @EnvironmentObject var viewModel: GeneralViewModel
-    @State var isPresenting = false
     
     var body: some View {
         ZStack {
@@ -20,9 +19,9 @@ struct LoginScreen: View {
                     VStack {
                         Image("Logo").padding(.top, 32)
                         Spacer().frame(height: 64)
-                        OutlinedTextFieldView(writtenText: $viewModel.loginScreenVM.loginText, placeholderText: "Логин")
+                        OutlinedTextFieldView(writtenText: $viewModel.loginScreenVM.loginText, placeholderText: "Логин", isNecessary: false)
                         Spacer().frame(height: 16)
-                        SecureFieldView(writtenText: $viewModel.loginScreenVM.passwordText, placeholderText: "Пароль")
+                        SecureFieldView(writtenText: $viewModel.loginScreenVM.passwordText, placeholderText: "Пароль", isNecessary: false)
                         
                     }.padding([.leading, .trailing], 16)
                 }
@@ -33,35 +32,40 @@ struct LoginScreen: View {
                         EmptyView()
                     }
                     OutlinedButtonView(areFilledFields: $viewModel.loginScreenVM.areFilledFields, text: "Войти") {
-                        viewModel.authVM.login(userName: viewModel.loginScreenVM.loginText, password: viewModel.loginScreenVM.passwordText, isPressedButton: $viewModel.loginScreenVM.pressedSignInButton) { response in
-                            
-                            switch(response) {
-                            case 200:
-                                viewModel.loginScreenVM.pressedSignInButton = true
-                            case 400:
-                                viewModel.loginScreenVM.errorToastMessage = "Incorrect login or password"
-                                isPresenting = true
-                            default:
-                                viewModel.loginScreenVM.errorToastMessage = "Some unexpected error. Please contact developer"
-                                isPresenting = true
+                        viewModel.authVM.login(
+                            userName: viewModel.loginScreenVM.loginText,
+                            password: viewModel.loginScreenVM.passwordText,
+                            isPressedButton: $viewModel.loginScreenVM.pressedSignInButton) { response in
+                                
+                                switch(response) {
+                                case 200:
+                                    print(viewModel.loginScreenVM.pressedSignInButton)
+                                case 400:
+                                    viewModel.loginScreenVM.errorToastMessage = "Incorrect login or password"
+                                    viewModel.isShowingToast.toggle()
+                                default:
+                                    viewModel.loginScreenVM.errorToastMessage = "Some unexpected error. Please contact developer"
+                                    viewModel.isShowingToast.toggle()
+                                }
+                                
                             }
-
-                        }
                         
                     }
-                    .toast(isPresenting: $isPresenting) {
+                    .toast(isPresenting: $viewModel.isShowingToast) {
                         AlertToast(type: .regular, title: viewModel.loginScreenVM.errorToastMessage)
                     }
                     NavigationLink(destination: RegisterScreen()) {
                         BasicButtonView(text: "Регистрация")
                     }
-                    .environmentObject(viewModel)
                 }.padding([.leading, .trailing], 16)
                     .padding(.bottom, 4)
             }
         }
         .preferredColorScheme(.dark)
         .background(Color.backgroundColor)
+        .onAppear {
+            viewModel.isShowingToast = false
+        }
     }
 }
 

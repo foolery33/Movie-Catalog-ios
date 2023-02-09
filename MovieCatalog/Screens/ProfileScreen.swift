@@ -42,28 +42,28 @@ struct ProfileScreen: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            OutlinedTextFieldView(writtenText: $viewModel.emailText, placeholderText: "")
+                            OutlinedTextFieldView(writtenText: $viewModel.emailText, placeholderText: "", isNecessary: true)
                         }
                         VStack(spacing: 8) {
                             Text("Cсылка на аватарку")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            OutlinedTextFieldView(writtenText: $viewModel.avatarLinkText, placeholderText: "")
+                            OutlinedTextFieldView(writtenText: $viewModel.avatarLinkText, placeholderText: "", isNecessary: false)
                         }
                         VStack(spacing: 8) {
                             Text("Имя")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            OutlinedTextFieldView(writtenText: $viewModel.nameText, placeholderText: "")
+                            OutlinedTextFieldView(writtenText: $viewModel.nameText, placeholderText: "", isNecessary: true)
                         }
                         VStack(spacing: 8) {
                             Text("Дата рождения")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            DatePickerView(dateValue: $viewModel.birthDateValue, dateText: $viewModel.birthDateText, placeholderText: "")
+                            DatePickerView(dateValue: $viewModel.birthDateValue, dateText: $viewModel.birthDateText, placeholderText: "", isNecessary: false)
                         }
                         VStack(spacing: 8) {
                             Text("Пол")

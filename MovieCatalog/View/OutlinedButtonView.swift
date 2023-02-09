@@ -36,6 +36,7 @@ struct OutlinedButtonView: View {
             .onTapGesture {
                 action()
             }
+            .disabled(!areFilledFields)
     }
     
 }

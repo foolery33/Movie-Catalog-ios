@@ -28,8 +28,4 @@ struct LoginScreenModel {
 //        areFilledFields = !(loginText.isEmpty || passwordText.isEmpty)
 //    }
     
-    func areFilled() -> Bool {
-        return !(loginText.isEmpty || passwordText.isEmpty)
-    }
-    
 }

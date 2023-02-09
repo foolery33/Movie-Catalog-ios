@@ -10,13 +10,21 @@ import SwiftUI
 struct OutlinedTextFieldView: View {
     @Binding var writtenText: String
     let placeholderText: String
+    let isNecessary: Bool
     var body: some View {
         ZStack(alignment: .leading) {
             if(writtenText.isEmpty) {
-                Text(placeholderText)
-                    .padding(.leading, 16)
-                    .foregroundColor(.grayFaded)
-                    .font(.system(size: 14, weight: .regular))
+                HStack(spacing: 0) {
+                    Text(placeholderText)
+                        .padding(.leading, 16)
+                        .foregroundColor(.grayFaded)
+                        .font(.system(size: 14, weight: .regular))
+                    if(isNecessary) {
+                        Text("*")
+                            .foregroundColor(.redColor)
+                            .font(.system(size: 14, weight: .bold))
+                    }
+                }
             }
             TextField("", text: $writtenText)
                 .foregroundColor(.redColor)
@@ -31,6 +39,6 @@ struct OutlinedTextFieldView: View {
 struct OutlinedTextFieldView_Previews: PreviewProvider {
     @State static var value = ""
     static var previews: some View {
-        OutlinedTextFieldView(writtenText: $value, placeholderText: "asdasd")
+        OutlinedTextFieldView(writtenText: $value, placeholderText: "asdasd", isNecessary: true)
     }
 }

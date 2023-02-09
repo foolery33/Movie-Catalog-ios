@@ -14,12 +14,12 @@ class ProfileScreenViewModel: ObservableObject {
         }
     }
     
-    var birthDateText: String {
+    var birthDateText: String? {
         get {
             model.birthDateText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Дата рождения", newValue: newValue)
+            model.birthDateText = newValue
         }
     }
     
@@ -50,12 +50,12 @@ class ProfileScreenViewModel: ObservableObject {
         }
     }
     
-    var sexText: String {
+    var sexText: Int? {
         get {
             model.sexText
         }
         set (newValue) {
-            setSex(gender: newValue)
+            sexText = newValue
         }
     }
     

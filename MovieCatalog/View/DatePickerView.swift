@@ -3,23 +3,30 @@ import SwiftUI
 struct DatePickerView: View {
     
     @Binding var dateValue: Date
-    @Binding var dateText: String
-    var placeholderText: String
+    @Binding var dateText: String?
+    let placeholderText: String
+    let isNecessary: Bool
     
     var body: some View {
         
         ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 8).stroke(Color.strokeColor, lineWidth: 1).frame(maxHeight: 43).padding([.leading, .trailing], 0.3)
+            RoundedRectangle(cornerRadius: 8).stroke(Color.strokeColor, lineWidth: 1).frame(height: 43).padding([.leading, .trailing], 0.3)
             HStack {
-                if(dateText.isEmpty) {
-                    Text(placeholderText)
-                        .padding(.leading, 16)
-                        .padding([.top, .bottom], 13)
-                        .foregroundColor(.grayFaded)
-                        .font(.system(size: 14, weight: .regular))
+                if(dateText == nil) {
+                    HStack(spacing: 0) {
+                        Text(placeholderText)
+                            .padding(.leading, 16)
+                            .foregroundColor(.grayFaded)
+                            .font(.system(size: 14, weight: .regular))
+                        if(isNecessary) {
+                            Text("*")
+                                .foregroundColor(.redColor)
+                                .font(.system(size: 14, weight: .bold))
+                        }
+                    }
                 }
                 else {
-                    Text(dateText)
+                    Text(dateText!)
                         .foregroundColor(.redColor)
                         .font(.system(size: 14, weight: .regular))
                         .padding([.top, .bottom], 13)
@@ -34,7 +41,7 @@ struct DatePickerView: View {
                         .colorMultiply(.redColor)
                 }
 
-            }
+            }.frame(height: 43)
         }
     }
     
@@ -42,8 +49,8 @@ struct DatePickerView: View {
 
 struct DatePickerView_Previews: PreviewProvider {
     @State static var dateValue = Date()
-    @State static var dateText: String = ""
+    @State static var dateText: String? = ""
     static var previews: some View {
-        DatePickerView(dateValue: $dateValue, dateText: $dateText, placeholderText: "Date")
+        DatePickerView(dateValue: $dateValue, dateText: $dateText, placeholderText: "Date", isNecessary: true)
     }
 }

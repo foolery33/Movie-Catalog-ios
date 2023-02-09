@@ -58,11 +58,15 @@ class LoginScreenViewModel: ObservableObject {
     
     var areFilledFields: Bool {
         get {
-            model.areFilled()
+            areFilled()
         }
         set (newValue) {
             model.areFilledFields = newValue
         }
+    }
+    
+    func areFilled() -> Bool {
+        return !(loginText.isEmpty || passwordText.isEmpty)
     }
     
 //    func changeFieldsValues(fieldType: String, newValue: String) {

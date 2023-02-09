@@ -14,5 +14,6 @@ class GeneralViewModel: ObservableObject {
     @Published var registerScreenVM: RegisterScreenViewModel = RegisterScreenViewModel()
     @Published var profileScreenVM: ProfileScreenViewModel = ProfileScreenViewModel()
     @Published var authVM: AuthViewModel = AuthViewModel()
+    @Published var isShowingToast: Bool = false
     
 }

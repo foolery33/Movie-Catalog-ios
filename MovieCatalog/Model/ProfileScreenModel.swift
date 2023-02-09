@@ -5,9 +5,9 @@ struct ProfileScreenModel {
     var emailText: String = "test@examale.com"
     var avatarLinkText: String = "https://vk.cc/chdMpX"
     var nameText: String = "Тест тестович"
-    var birthDateText: String = "01.01.2022"
+    var birthDateText: String? = nil
     var birthDateValue: Date = Date.now
-    var sexText: String = "female"
+    var sexText: Int = 2
     var areFilledFields: Bool = true
     
     mutating func changeFieldsValues(fieldType: String, text: String) {
@@ -20,14 +20,10 @@ struct ProfileScreenModel {
             nameText = text
         case "Дата рождения":
             birthDateText = text
-        case "Мужчина":
-            sexText = "male"
-        case "Женщина":
-            sexText = "female"
         default:
             print("Nothing happened")
         }
-        areFilledFields = !(emailText.isEmpty || avatarLinkText.isEmpty || nameText.isEmpty || birthDateText.isEmpty || sexText.isEmpty)
+        areFilledFields = !(emailText.isEmpty || avatarLinkText.isEmpty || nameText.isEmpty || birthDateText == nil)
     }
     
     func convertStringIntoDate(stringDate: String) -> Date {

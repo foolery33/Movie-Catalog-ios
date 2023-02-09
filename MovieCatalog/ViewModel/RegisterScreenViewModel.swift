@@ -17,16 +17,16 @@ class RegisterScreenViewModel: ObservableObject {
         }
         set (newValue) {
             model.birthDateValue = newValue
-            changeFieldsValues(fieldType: "Дата рождения", newValue: convertDate(date: newValue))
+            model.birthDateText = convertDate(date: newValue)
         }
     }
     
-    var birthDateText: String {
+    var birthDateText: String? {
         get {
             model.birthDateText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Дата рождения", newValue: newValue)
+            model.birthDateText = newValue
         }
     }
     
@@ -35,7 +35,7 @@ class RegisterScreenViewModel: ObservableObject {
             model.loginText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Логин", newValue: newValue)
+            model.loginText = newValue
         }
     }
     
@@ -44,7 +44,7 @@ class RegisterScreenViewModel: ObservableObject {
             model.emailText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "E-mail", newValue: newValue)
+            model.emailText = newValue
         }
     }
     
@@ -53,7 +53,7 @@ class RegisterScreenViewModel: ObservableObject {
             model.nameText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Имя", newValue: newValue)
+            model.nameText = newValue
         }
     }
     
@@ -62,7 +62,7 @@ class RegisterScreenViewModel: ObservableObject {
             model.passwordText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Пароль", newValue: newValue)
+            model.passwordText = newValue
         }
     }
     
@@ -71,40 +71,81 @@ class RegisterScreenViewModel: ObservableObject {
             model.confirmPasswordText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Подтвердите пароль", newValue: newValue)
+            model.confirmPasswordText = newValue
         }
     }
     
-    var sexText: String {
+    var sexText: Int? {
         get {
             model.sexText
         }
         set (newValue) {
-            setSex(gender: newValue)
+            model.sexText = newValue
         }
     }
     
     var areFilledFields: Bool {
         get {
-            model.areFilledFields
+            areFilled()
         }
         set (newValue) {
             model.areFilledFields = newValue
         }
     }
     
-    func changeFieldsValues(fieldType: String, newValue: String) -> Void {
-        model.changeFieldsValues(fieldType: fieldType, text: newValue)
+    var isPressedButton: Bool {
+        get {
+            model.isPressedButton
+        }
+        set (newValue) {
+            model.isPressedButton = newValue
+        }
     }
     
-    func setSex(gender: String) -> Void {
-        changeFieldsValues(fieldType: gender, newValue: "blahblahblah")
+    var errorToastMessage: String {
+        get {
+            model.errorToastMessage
+        }
+        set (newValue) {
+            model.errorToastMessage = newValue
+        }
     }
+    
+    func areFilled() -> Bool {
+        return !(loginText.isEmpty || nameText.isEmpty || passwordText.isEmpty || confirmPasswordText.isEmpty || emailText.isEmpty)
+    }
+//    func changeFieldsValues(fieldType: String, newValue: String) -> Void {
+//        model.changeFieldsValues(fieldType: fieldType, text: newValue)
+//    }
+    
+//    func setSex(gender: String) -> Void {
+//        changeFieldsValues(fieldType: gender, newValue: "blahblahblah")
+//    }
 
     func convertDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YY"
         return dateFormatter.string(from: date)
+    }
+    
+    func showRegistrationDataErrors() -> String? {
+        if (model.passwordText.count >= 6) {
+            return "Password should consist of at least 6 characters"
+        }
+        if(model.passwordText != model.confirmPasswordText) {
+            return "Written passwords are different"
+        }
+        if (!isValidEmail(model.emailText)) {
+            return "Your e-mail does not conform to e-mail starndard"
+        }
+        return nil
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
 }

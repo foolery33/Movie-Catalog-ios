@@ -9,14 +9,22 @@ import SwiftUI
 
 struct SecureFieldView: View {
     @Binding var writtenText: String
-    var placeholderText: String
+    let placeholderText: String
+    let isNecessary: Bool
     var body: some View {
         ZStack(alignment: .leading) {
             if(writtenText.isEmpty) {
-                Text(placeholderText)
-                    .padding(.leading, 16)
-                    .foregroundColor(.grayFaded)
-                    .font(.system(size: 14, weight: .regular))
+                HStack(spacing: 0) {
+                    Text(placeholderText)
+                        .padding(.leading, 16)
+                        .foregroundColor(.grayFaded)
+                        .font(.system(size: 14, weight: .regular))
+                    if(isNecessary) {
+                        Text("*")
+                            .foregroundColor(.redColor)
+                            .font(.system(size: 14, weight: .bold))
+                    }
+                }
             }
             SecureField("", text: $writtenText)
                 .foregroundColor(.redColor)
@@ -28,8 +36,9 @@ struct SecureFieldView: View {
     }
 }
 
-//struct SecureFieldView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SecureFieldView()
-//    }
-//}
+struct SecureFieldView_Previews: PreviewProvider {
+    @State static var writtenText: String = ""
+    static var previews: some View {
+        SecureFieldView(writtenText: $writtenText, placeholderText: "password", isNecessary: true)
+    }
+}

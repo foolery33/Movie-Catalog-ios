@@ -16,8 +16,10 @@ struct MovieCatalogApp: App {
         WindowGroup {
             NavigationView {
                 LoginScreen()
+                //RegisterScreen()
             }
             .environmentObject(viewModel)
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
