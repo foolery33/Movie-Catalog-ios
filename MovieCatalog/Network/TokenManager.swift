@@ -12,11 +12,14 @@ class TokenManager {
     
     static let shared = TokenManager()
     
-    func fetchAccessToken() -> String? {
-        KeychainWrapper.standard.string(forKey: "accessToken")
+    func fetchAccessToken() -> String {
+        KeychainWrapper.standard.string(forKey: "accessToken") ?? ""
     }
     func saveAccessToken(accessToken: String) -> Void {
         KeychainWrapper.standard.set(accessToken, forKey: "accessToken")
+    }
+    func clearToken() {
+        KeychainWrapper.standard.set("", forKey: "accessToken")
     }
     
 }

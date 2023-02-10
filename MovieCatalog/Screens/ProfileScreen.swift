@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ProfileScreen: View {
     
-    @ObservedObject var viewModel: ProfileScreenViewModel
+    @EnvironmentObject var viewModel: GeneralViewModel
     
     var userName: String = "Ulyana"
     
@@ -42,42 +43,70 @@ struct ProfileScreen: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            OutlinedTextFieldView(writtenText: $viewModel.emailText, placeholderText: "", isNecessary: true)
+                            OutlinedTextFieldView(writtenText: $viewModel.profileScreenVM.emailText, placeholderText: "", isNecessary: true)
                         }
                         VStack(spacing: 8) {
                             Text("Cсылка на аватарку")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            OutlinedTextFieldView(writtenText: $viewModel.avatarLinkText, placeholderText: "", isNecessary: false)
+                            OutlinedTextFieldView(writtenText: $viewModel.profileScreenVM.avatarLinkText, placeholderText: "", isNecessary: false)
                         }
                         VStack(spacing: 8) {
                             Text("Имя")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            OutlinedTextFieldView(writtenText: $viewModel.nameText, placeholderText: "", isNecessary: true)
+                            OutlinedTextFieldView(writtenText: $viewModel.profileScreenVM.nameText, placeholderText: "", isNecessary: true)
                         }
                         VStack(spacing: 8) {
                             Text("Дата рождения")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            DatePickerView(dateValue: $viewModel.birthDateValue, dateText: $viewModel.birthDateText, placeholderText: "", isNecessary: false)
+                            DatePickerView(dateValue: $viewModel.profileScreenVM.birthDateValue, dateText: $viewModel.profileScreenVM.birthDateText, placeholderText: "", isNecessary: false)
                         }
                         VStack(spacing: 8) {
                             Text("Пол")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            SexButton(sexText: $viewModel.sexText)
+                            SexButton(sexText: $viewModel.profileScreenVM.sexText)
                         }
                         
                     }
                     Spacer().frame(height: 48)
                     VStack(spacing: 8) {
-                        OutlinedButtonView(areFilledFields: $viewModel.areFilledFields, text: "Сохранить") {}
-                        BasicButtonView(text: "Выйти из аккаунта")
+                        OutlinedButtonView(areFilledFields: $viewModel.profileScreenVM.areFilledFields, text: "Сохранить") {}
+                        NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true), isActive: $viewModel.profileScreenVM.isPressedButton) {
+                            EmptyView()
+                        }
+                        NavigationLink(destination: EmptyView()) {
+                            EmptyView()
+                        }
+                        Text("Выйти из аккаунта")
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.redColor)
+                            .font(.system(size: 16, weight: .medium))
+                            .padding([.top, .bottom], 6)
+                            .onTapGesture {
+                                viewModel.authVM.logout(isPressedButton: $viewModel.profileScreenVM.isPressedButton) { response in
+                                    print(response)
+                                    switch(response) {
+                                    case 200:
+                                        print("Successful logging out")
+                                        viewModel.loginScreenVM = LoginScreenViewModel()
+                                        viewModel.registerScreenVM = RegisterScreenViewModel()
+                                        break
+                                    default:
+                                        viewModel.toastMessage = "Some unexpected error. Please contact developer"
+                                        viewModel.isShowingToast.toggle()
+                                    }
+                                }
+                            }
+                            .toast(isPresenting: $viewModel.isShowingToast) {
+                                AlertToast(type: .regular, title: "Logout error", subTitle: viewModel.toastMessage)
+                            }
                     }
                     Spacer().frame(height: 85)
                 }
@@ -89,11 +118,16 @@ struct ProfileScreen: View {
                 
         }
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+        }
     }
 }
 
 struct ProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileScreen(viewModel: ProfileScreenViewModel())
+        NavigationView {
+            ProfileScreen()
+        }
+        .environmentObject(GeneralViewModel())
     }
 }

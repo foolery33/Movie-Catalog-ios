@@ -28,6 +28,7 @@
 		845E9A4D298D15270052594F /* ProfileScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845E9A4C298D15270052594F /* ProfileScreenModel.swift */; };
 		84A91C89297E47A000101CFB /* OutlinedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C88297E47A000101CFB /* OutlinedButtonView.swift */; };
 		84A91C8E297E79FF00101CFB /* GeneralScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */; };
+		84ABD8F22995FC00007DA862 /* LogoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD8F12995FC00007DA862 /* LogoutModel.swift */; };
 		84B0BAD32980D9DC00B66EE7 /* SecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */; };
 		84B0BAD52980E84D00B66EE7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */; };
 		84B3FA88299295FE008341AB /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA87299295FD008341AB /* AuthViewModel.swift */; };
@@ -94,6 +95,7 @@
 		845E9A4C298D15270052594F /* ProfileScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenModel.swift; sourceTree = "<group>"; };
 		84A91C88297E47A000101CFB /* OutlinedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButtonView.swift; sourceTree = "<group>"; };
 		84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenProtocol.swift; sourceTree = "<group>"; };
+		84ABD8F12995FC00007DA862 /* LogoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModel.swift; sourceTree = "<group>"; };
 		84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
 		84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		84B3FA87299295FD008341AB /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -277,6 +279,15 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		84ABD8F02995FBE2007DA862 /* Auth Models */ = {
+			isa = PBXGroup;
+			children = (
+				84B3FA8C29929663008341AB /* TokenModel.swift */,
+				84ABD8F12995FC00007DA862 /* LogoutModel.swift */,
+			);
+			path = "Auth Models";
+			sourceTree = "<group>";
+		};
 		84B3FA85299295E7008341AB /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,8 +301,8 @@
 		84B3FA86299295EC008341AB /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				84ABD8F02995FBE2007DA862 /* Auth Models */,
 				84B3FA87299295FD008341AB /* AuthViewModel.swift */,
-				84B3FA8C29929663008341AB /* TokenModel.swift */,
 				841BAFC52994CB6F006B095E /* RegisterParametersModel.swift */,
 			);
 			path = Auth;
@@ -443,6 +454,7 @@
 			files = (
 				84C8DE6E297FDC6B0068DA23 /* RegisterScreen.swift in Sources */,
 				84CAB7A4298641FA00E2ED60 /* FavouriteCard.swift in Sources */,
+				84ABD8F22995FC00007DA862 /* LogoutModel.swift in Sources */,
 				84B3FA9329929FCA008341AB /* GeneralViewModel.swift in Sources */,
 				84C8DE70298036490068DA23 /* RegisterScreenViewModel.swift in Sources */,
 				84BC26B62982D90600D2BF69 /* SexButton.swift in Sources */,

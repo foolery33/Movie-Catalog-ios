@@ -55,7 +55,7 @@ class ProfileScreenViewModel: ObservableObject {
             model.sexText
         }
         set (newValue) {
-            sexText = newValue
+            model.sexText = newValue
         }
     }
     
@@ -65,6 +65,15 @@ class ProfileScreenViewModel: ObservableObject {
         }
         set (newValue) {
             model.areFilledFields = newValue
+        }
+    }
+    
+    var isPressedButton: Bool {
+        get {
+            model.isPressedButton
+        }
+        set (newValue) {
+            model.isPressedButton = newValue
         }
     }
     

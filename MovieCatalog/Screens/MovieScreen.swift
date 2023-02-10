@@ -139,6 +139,9 @@ struct MovieScreen: View {
                 ReviewDialog(showReviewDialog: $showReviewDialog)
             }
         }
+        .onAppear {
+            
+        }
     }
     
 }

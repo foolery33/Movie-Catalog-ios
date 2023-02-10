@@ -9,7 +9,7 @@ import SwiftUI
 
 class LoginScreenViewModel: ObservableObject {
     
-    @Published var model: LoginScreenModel = LoginScreenModel()
+    @Published private var model: LoginScreenModel = LoginScreenModel()
     
     var isPresenting: Bool {
         get {
@@ -30,12 +30,12 @@ class LoginScreenViewModel: ObservableObject {
         
     }
     
-    var pressedSignInButton: Bool {
+    var isPressedButton: Bool {
         get {
-            model.pressedSignInButton
+            model.isPressedButton
         }
         set (newValue) {
-            model.pressedSignInButton = newValue
+            model.isPressedButton = newValue
         }
     }
     

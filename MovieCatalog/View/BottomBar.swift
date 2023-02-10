@@ -16,7 +16,7 @@ struct BottomBar: View {
             NavigationLink(destination: MainScreen()) {
                 BottomBarItem(image: Image("tv"), text: "Главное", isItemPressed: itemPressed == 0)
             }
-            NavigationLink(destination: ProfileScreen(viewModel: ProfileScreenViewModel()).navigationBarBackButtonHidden(true)) {
+            NavigationLink(destination: ProfileScreen().navigationBarBackButtonHidden(true)) {
                 BottomBarItem(image: Image("Person"), text: "Профиль", isItemPressed: itemPressed == 1)
             }
         }

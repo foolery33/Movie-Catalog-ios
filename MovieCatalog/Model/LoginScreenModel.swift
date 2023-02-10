@@ -12,7 +12,7 @@ struct LoginScreenModel {
     var loginText: String = ""
     var passwordText: String = ""
     var areFilledFields: Bool = false
-    var pressedSignInButton: Bool = false
+    var isPressedButton: Bool = false
     var errorToastMessage: String = ""
     var isPresenting: Bool = false
     

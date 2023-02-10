@@ -7,8 +7,9 @@ struct ProfileScreenModel {
     var nameText: String = "Тест тестович"
     var birthDateText: String? = nil
     var birthDateValue: Date = Date.now
-    var sexText: Int = 2
+    var sexText: Int? = nil
     var areFilledFields: Bool = true
+    var isPressedButton: Bool = false
     
     mutating func changeFieldsValues(fieldType: String, text: String) {
         switch fieldType {

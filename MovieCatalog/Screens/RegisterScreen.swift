@@ -73,6 +73,9 @@ struct RegisterScreen: View {
                     NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true)) {
                         BasicButtonView(text: "У меня уже есть аккаунт")
                     }
+                    NavigationLink(destination: EmptyView()) {
+                        EmptyView()
+                    }
                     Spacer().frame(height: 6)
                 }
                 Spacer()

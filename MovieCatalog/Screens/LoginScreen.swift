@@ -27,19 +27,21 @@ struct LoginScreen: View {
                 }
                 Spacer()
                 VStack(spacing: 8) {
-                    
-                    NavigationLink(destination: MainScreen(), isActive: $viewModel.loginScreenVM.pressedSignInButton) {
+                    NavigationLink(destination: EmptyView()) {
+                        EmptyView()
+                    }
+                    NavigationLink(destination: MainScreen(), isActive: $viewModel.loginScreenVM.isPressedButton) {
                         EmptyView()
                     }
                     OutlinedButtonView(areFilledFields: $viewModel.loginScreenVM.areFilledFields, text: "Войти") {
                         viewModel.authVM.login(
                             userName: viewModel.loginScreenVM.loginText,
                             password: viewModel.loginScreenVM.passwordText,
-                            isPressedButton: $viewModel.loginScreenVM.pressedSignInButton) { response in
+                            isPressedButton: $viewModel.loginScreenVM.isPressedButton) { response in
                                 
                                 switch(response) {
                                 case 200:
-                                    print(viewModel.loginScreenVM.pressedSignInButton)
+                                    break
                                 case 400:
                                     viewModel.toastMessage = "Incorrect login or password"
                                     viewModel.isShowingToast.toggle()
@@ -57,6 +59,7 @@ struct LoginScreen: View {
                     NavigationLink(destination: RegisterScreen()) {
                         BasicButtonView(text: "Регистрация")
                     }
+                    .navigationBarBackButtonHidden(true)
                 }.padding([.leading, .trailing], 16)
                     .padding(.bottom, 4)
             }
@@ -66,7 +69,6 @@ struct LoginScreen: View {
         .onAppear {
             viewModel.isShowingToast = false
         }
-        // MARK - добавить обработку ошибки - в логине есть пробелы (или посмотреть какие ещё есть запрещённые символы в логине)
     }
 }
 

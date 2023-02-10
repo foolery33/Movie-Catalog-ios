@@ -54,7 +54,7 @@ class AuthViewModel: ObservableObject {
         AF.request(url, method: .post, parameters: httpParameters, encoder: JSONParameterEncoder.default, interceptor: interceptor).responseData { [self] response in
             if let requestStatusCode = response.response?.statusCode {
                 statusCode = requestStatusCode
-//                completion(statusCode)
+                //                completion(statusCode)
             }
             switch response.result {
             case .success(let data):
@@ -64,6 +64,39 @@ class AuthViewModel: ObservableObject {
                     TokenManager.shared.saveAccessToken(accessToken: accessToken.token)
                     isPressedButton.wrappedValue = true
                     completion(statusCode)
+                } catch(let error) {
+                    print("Error: ", error)
+                    completion(statusCode)
+                    return
+                }
+            case .failure(let error):
+                print("Error: ", error)
+                completion(statusCode)
+                return
+            }
+        }
+    }
+    
+    func logout(isPressedButton: Binding<Bool>, completion: @escaping (Int?) -> Void) {
+        let url = baseURL + "/api/account/logout"
+        AF.request(url, method: .post, interceptor: interceptor).responseData { [self] response in
+            if let requestStatusCode = response.response?.statusCode {
+                statusCode = requestStatusCode
+                completion(statusCode)
+            }
+            switch response.result {
+            case .success(let data):
+                do {
+                    let decodedData = try JSONDecoder().decode(LogoutModel.self, from: data)
+                    if(decodedData.message == "Logged Out") {
+                        TokenManager.shared.clearToken()
+                        print(TokenManager.shared.fetchAccessToken())
+                        isPressedButton.wrappedValue = true
+                    }
+                    else {
+                        print("")
+                        completion(401)
+                    }
                 } catch(let error) {
                     print("Error: ", error)
                     completion(statusCode)

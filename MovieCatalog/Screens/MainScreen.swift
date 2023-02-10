@@ -83,8 +83,6 @@ struct MainScreen: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            print("isPressedLogin: ", viewModel.loginScreenVM.pressedSignInButton)
-            print("isPressedRegister: ", viewModel.registerScreenVM.isPressedButton)
         }
     }
     

@@ -12,11 +12,19 @@ struct MovieCatalogApp: App {
     
     @StateObject var viewModel: GeneralViewModel = GeneralViewModel()
     
+    init() {
+        UINavigationBar.setAnimationsEnabled(false)
+    }
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                LoginScreen()
-                //RegisterScreen()
+                if(TokenManager.shared.fetchAccessToken().isEmpty) {
+                    LoginScreen()
+                }
+                else {
+                 MainScreen()
+                }
             }
             .environmentObject(viewModel)
             .navigationViewStyle(StackNavigationViewStyle())

@@ -16,8 +16,8 @@ class CustomRequestInterceptor: RequestInterceptor {
                for session: Session,
                completion: @escaping (Result<URLRequest, Error>) -> Void) {
         var urlRequest = urlRequest
-        if let token = TokenManager.shared.fetchAccessToken() {
-            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        if !TokenManager.shared.fetchAccessToken().isEmpty {
+            urlRequest.setValue("Bearer \(TokenManager.shared.fetchAccessToken())", forHTTPHeaderField: "Authorization")
         }
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         completion(.success(urlRequest))
