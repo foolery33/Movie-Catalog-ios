@@ -129,7 +129,10 @@ class RegisterScreenViewModel: ObservableObject {
     }
     
     func showRegistrationDataErrors() -> String? {
-        if (model.passwordText.count >= 6) {
+        if( model.loginText.contains(" ")) {
+            return "Login should not contain any whitespaces"
+        }
+        if (model.passwordText.count < 6) {
             return "Password should consist of at least 6 characters"
         }
         if(model.passwordText != model.confirmPasswordText) {
@@ -143,7 +146,6 @@ class RegisterScreenViewModel: ObservableObject {
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }

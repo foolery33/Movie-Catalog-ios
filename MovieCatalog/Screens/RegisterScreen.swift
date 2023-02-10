@@ -39,7 +39,7 @@ struct RegisterScreen: View {
                     .navigationBarBackButtonHidden(true)
                     OutlinedButtonView(areFilledFields: $viewModel.registerScreenVM.areFilledFields, text: "Зарегистрироваться") {
                         if let message = viewModel.registerScreenVM.showRegistrationDataErrors() {
-                            viewModel.registerScreenVM.errorToastMessage = message
+                            viewModel.toastMessage = message
                             viewModel.isShowingToast = true
                         }
                         else {
@@ -55,8 +55,11 @@ struct RegisterScreen: View {
                                     switch(response) {
                                     case 200:
                                         break
+                                    case 400:
+                                        viewModel.toastMessage = "Username '\(viewModel.registerScreenVM.loginText)' is already taken"
+                                        viewModel.isShowingToast = true
                                     default:
-                                        viewModel.registerScreenVM.errorToastMessage = "Some unexpected error. Please contact developer"
+                                        viewModel.toastMessage = "Some unexpected error. Please contact developer"
                                         viewModel.isShowingToast = true
                                     }
                                     
@@ -64,7 +67,7 @@ struct RegisterScreen: View {
                         }
                     }
                     .toast(isPresenting: $viewModel.isShowingToast) {
-                        AlertToast(type: .regular, subTitle: viewModel.registerScreenVM.errorToastMessage)
+                        AlertToast(type: .regular, title: "Registration error", subTitle: viewModel.toastMessage)
                     }
                     Spacer().frame(height: 8)
                     NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true)) {

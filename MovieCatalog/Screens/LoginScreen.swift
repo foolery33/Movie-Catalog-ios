@@ -41,10 +41,10 @@ struct LoginScreen: View {
                                 case 200:
                                     print(viewModel.loginScreenVM.pressedSignInButton)
                                 case 400:
-                                    viewModel.loginScreenVM.errorToastMessage = "Incorrect login or password"
+                                    viewModel.toastMessage = "Incorrect login or password"
                                     viewModel.isShowingToast.toggle()
                                 default:
-                                    viewModel.loginScreenVM.errorToastMessage = "Some unexpected error. Please contact developer"
+                                    viewModel.toastMessage = "Some unexpected error. Please contact developer"
                                     viewModel.isShowingToast.toggle()
                                 }
                                 
@@ -52,7 +52,7 @@ struct LoginScreen: View {
                         
                     }
                     .toast(isPresenting: $viewModel.isShowingToast) {
-                        AlertToast(type: .regular, title: viewModel.loginScreenVM.errorToastMessage)
+                        AlertToast(type: .regular, title: "Login error", subTitle: viewModel.toastMessage)
                     }
                     NavigationLink(destination: RegisterScreen()) {
                         BasicButtonView(text: "Регистрация")
@@ -66,6 +66,7 @@ struct LoginScreen: View {
         .onAppear {
             viewModel.isShowingToast = false
         }
+        // MARK - добавить обработку ошибки - в логине есть пробелы (или посмотреть какие ещё есть запрещённые символы в логине)
     }
 }
 
