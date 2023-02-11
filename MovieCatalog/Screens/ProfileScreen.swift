@@ -12,26 +12,33 @@ struct ProfileScreen: View {
     
     @EnvironmentObject var viewModel: GeneralViewModel
     
-    var userName: String = "Ulyana"
-    
     @State var itemPressed: Int = 1
-    @State var emailText: String = "test@example.com"
-    @State var avatarLinkText: String = "https://vk.cc/chdMpX"
-    @State var usernameText: String = "Тест Тестович"
-    @State var birthDateText: String = "01.01.2022"
     
     var body: some View {
         ZStack(alignment: .bottom) {
             ScrollView(showsIndicators: false) {
-                VStack {
+                VStack(spacing: 0) {
                     HStack(spacing: 16) {
-                        Image("Ulya")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 88, height: 88)
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(Circle())
-                        Text(userName)
+                        AsyncImage(url: URL(string: viewModel.profileScreenVM.avatarLinkText)) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 88, height: 88)
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(Circle())
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 88, height: 88)
+                        .clipShape(Circle())
+
+//                        Image("Ulya")
+//                            .resizable()
+//                            .scaledToFill()
+//                            .frame(width: 88, height: 88)
+//                            .aspectRatio(contentMode: .fit)
+//                            .clipShape(Circle())
+                        Text(viewModel.profileScreenVM.nickName)
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .bold))
                         Spacer()
@@ -64,7 +71,7 @@ struct ProfileScreen: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .foregroundColor(.strokeColor)
                                 .font(.system(size: 16, weight: .medium))
-                            DatePickerView(dateValue: $viewModel.profileScreenVM.birthDateValue, dateText: $viewModel.profileScreenVM.birthDateText, placeholderText: "", isNecessary: false)
+                            DatePickerView(dateValue: $viewModel.profileScreenVM.birthDateValue, dateText: $viewModel.profileScreenVM.birthDateText, placeholderText: "", isNecessary: true)
                         }
                         VStack(spacing: 8) {
                             Text("Пол")
@@ -77,12 +84,23 @@ struct ProfileScreen: View {
                     }
                     Spacer().frame(height: 48)
                     VStack(spacing: 8) {
-                        OutlinedButtonView(areFilledFields: $viewModel.profileScreenVM.areFilledFields, text: "Сохранить") {}
-                        NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true), isActive: $viewModel.profileScreenVM.isPressedButton) {
-                            EmptyView()
-                        }
-                        NavigationLink(destination: EmptyView()) {
-                            EmptyView()
+                        OutlinedButtonView(areFilledFields: $viewModel.profileScreenVM.areFilledFields, text: "Сохранить") {
+                            viewModel.userVM.putProfile(viewModel: $viewModel.profileScreenVM) { response in
+                                print(response)
+                                switch (response) {
+                                case 200:
+                                    viewModel.toastMessage = "Данные успешно сохранены"
+                                    viewModel.profileScreenVM.birthDateValue = viewModel.profileScreenVM.convertStringIntoDate(stringDate: viewModel.profileScreenVM.birthDateText)
+                                    break
+                                case 401:
+                                    viewModel.toastMessage = "Your token is expired. Please authenticate your account again"
+                                case 400:
+                                    viewModel.toastMessage = "Some error"
+                                default:
+                                    viewModel.toastMessage = "Some unexpected error. Please contact"
+                                }
+                                viewModel.isShowingToast = true
+                            }
                         }
                         Text("Выйти из аккаунта")
                             .frame(maxWidth: .infinity)
@@ -91,7 +109,6 @@ struct ProfileScreen: View {
                             .padding([.top, .bottom], 6)
                             .onTapGesture {
                                 viewModel.authVM.logout(isPressedButton: $viewModel.profileScreenVM.isPressedButton) { response in
-                                    print(response)
                                     switch(response) {
                                     case 200:
                                         print("Successful logging out")
@@ -104,9 +121,10 @@ struct ProfileScreen: View {
                                     }
                                 }
                             }
-                            .toast(isPresenting: $viewModel.isShowingToast) {
-                                AlertToast(type: .regular, title: "Logout error", subTitle: viewModel.toastMessage)
-                            }
+                        NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true), isActive: $viewModel.profileScreenVM.isPressedButton) {
+                            EmptyView()
+                        }
+                        NavigationLink(destination: LoginScreen().navigationBarBackButtonHidden(true), isActive: $viewModel.isExpiredToken, label: {EmptyView()})
                     }
                     Spacer().frame(height: 85)
                 }
@@ -119,6 +137,23 @@ struct ProfileScreen: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
+            DispatchQueue.main.async {
+                viewModel.userVM.getProfile(viewModel: $viewModel) { response in
+                    switch (response) {
+                    case 200:
+                        print(viewModel.profileScreenVM.birthDateText)
+                        print(viewModel.profileScreenVM.birthDateValue)
+                    case 401:
+                        viewModel.toastMessage = "Your login is expired. Please reload this page to fix it"
+                        viewModel.isShowingToast = true
+                    default:
+                        print("Failed")
+                    }
+                }
+            }
+        }
+        .toast(isPresenting: $viewModel.isShowingToast) {
+            AlertToast(type: .regular, title: "Profile Screen message", subTitle: viewModel.toastMessage)
         }
     }
 }

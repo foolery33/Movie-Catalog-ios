@@ -13,7 +13,7 @@ struct MovieCatalogApp: App {
     @StateObject var viewModel: GeneralViewModel = GeneralViewModel()
     
     init() {
-        UINavigationBar.setAnimationsEnabled(false)
+        UINavigationBar.setAnimationsEnabled(true)
     }
     
     var body: some Scene {

@@ -21,7 +21,7 @@ class RegisterScreenViewModel: ObservableObject {
         }
     }
     
-    var birthDateText: String? {
+    var birthDateText: String {
         get {
             model.birthDateText
         }

@@ -48,11 +48,32 @@ class CustomRequestInterceptor: RequestInterceptor {
     }
     
     private func refreshToken(completion: @escaping (() -> Void)) {
-        // TODO: refresh token
-        print("Refreshing token...")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            TokenManager.shared.saveAccessToken(accessToken: UUID().uuidString)
-            completion()
+        print("refresh")
+        let httpParameters: [String: String] = [
+            "userName": TokenManager.shared.fetchLogin(),
+            "password": TokenManager.shared.fetchPassword()
+        ]
+        let url = "https://react-midterm.kreosoft.space/api/account/login"
+        AF.request(url, method: .post, parameters: httpParameters, encoder: JSONParameterEncoder.default).responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    print("succ")
+                    let decodedData = try JSONDecoder().decode(TokenModel.self, from: data)
+                    //TokenManager.shared.saveAccessToken(accessToken: accessToken.token)
+                    TokenManager.shared.saveData(login: TokenManager.shared.fetchLogin(), password: TokenManager.shared.fetchPassword(), accessToken: decodedData.token)
+                    print(TokenManager.shared.fetchAccessToken())
+                    completion()
+                } catch(let error) {
+                    print("Error: ", error)
+                    completion()
+                    return
+                }
+            case .failure(let error):
+                print("Error: ", error)
+                completion()
+                return
+            }
         }
     }
 }

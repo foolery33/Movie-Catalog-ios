@@ -29,6 +29,8 @@
 		84A91C89297E47A000101CFB /* OutlinedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C88297E47A000101CFB /* OutlinedButtonView.swift */; };
 		84A91C8E297E79FF00101CFB /* GeneralScreenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */; };
 		84ABD8F22995FC00007DA862 /* LogoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD8F12995FC00007DA862 /* LogoutModel.swift */; };
+		84ABD8F6299633EB007DA862 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD8F5299633EB007DA862 /* UserViewModel.swift */; };
+		84ABD8F8299634ED007DA862 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD8F7299634ED007DA862 /* ProfileModel.swift */; };
 		84B0BAD32980D9DC00B66EE7 /* SecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */; };
 		84B0BAD52980E84D00B66EE7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */; };
 		84B3FA88299295FE008341AB /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B3FA87299295FD008341AB /* AuthViewModel.swift */; };
@@ -96,6 +98,8 @@
 		84A91C88297E47A000101CFB /* OutlinedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedButtonView.swift; sourceTree = "<group>"; };
 		84A91C8D297E79FF00101CFB /* GeneralScreenProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralScreenProtocol.swift; sourceTree = "<group>"; };
 		84ABD8F12995FC00007DA862 /* LogoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModel.swift; sourceTree = "<group>"; };
+		84ABD8F5299633EB007DA862 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		84ABD8F7299634ED007DA862 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		84B0BAD22980D9DC00B66EE7 /* SecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureFieldView.swift; sourceTree = "<group>"; };
 		84B0BAD42980E84D00B66EE7 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		84B3FA87299295FD008341AB /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -288,9 +292,19 @@
 			path = "Auth Models";
 			sourceTree = "<group>";
 		};
+		84ABD8F4299633B9007DA862 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				84ABD8F5299633EB007DA862 /* UserViewModel.swift */,
+				84ABD8F7299634ED007DA862 /* ProfileModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		84B3FA85299295E7008341AB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				84ABD8F4299633B9007DA862 /* User */,
 				84B3FA86299295EC008341AB /* Auth */,
 				84B3FA8E299296AC008341AB /* CustomRequestInterceptor.swift */,
 				84B3FA9029929737008341AB /* TokenManager.swift */,
@@ -477,6 +491,8 @@
 				843DB201297D89E00024B207 /* LoginScreenModel.swift in Sources */,
 				845E9A4B298D14AD0052594F /* ProfileScreenViewModel.swift in Sources */,
 				843DB1FE297D48D90024B207 /* LoginScreenViewModel.swift in Sources */,
+				84ABD8F6299633EB007DA862 /* UserViewModel.swift in Sources */,
+				84ABD8F8299634ED007DA862 /* ProfileModel.swift in Sources */,
 				842760CF297A5FB900B8B679 /* LoginScreen.swift in Sources */,
 				840D805E2984279300690A2E /* SectionText.swift in Sources */,
 				84C8DE6C297FD8BD0068DA23 /* BasicButtonView.swift in Sources */,

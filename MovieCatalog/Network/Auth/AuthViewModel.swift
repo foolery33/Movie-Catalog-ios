@@ -14,7 +14,7 @@ class AuthViewModel: ObservableObject {
     
     var statusCode: Int? = nil
     private let baseURL = "https://react-midterm.kreosoft.space"
-    private let interceptor = CustomRequestInterceptor()
+    private let interceptor: CustomRequestInterceptor = CustomRequestInterceptor()
     
     func login(userName: String, password: String, isPressedButton: Binding<Bool>, completion: @escaping (Int?) -> Void) {
         let httpParameters: [String: String] = [
@@ -32,7 +32,8 @@ class AuthViewModel: ObservableObject {
                 do {
                     let decodedData = try JSONDecoder().decode(TokenModel.self, from: data)
                     accessToken = decodedData
-                    TokenManager.shared.saveAccessToken(accessToken: accessToken.token)
+                    //TokenManager.shared.saveAccessToken(accessToken: accessToken.token)
+                    TokenManager.shared.saveData(login: userName, password: password, accessToken: accessToken.token)
                     isPressedButton.wrappedValue = true
                     completion(statusCode)
                 } catch(let error) {

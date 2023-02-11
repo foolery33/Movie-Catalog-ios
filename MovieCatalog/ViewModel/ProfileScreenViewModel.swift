@@ -4,17 +4,35 @@ class ProfileScreenViewModel: ObservableObject {
     
     @Published private var model: ProfileScreenModel = ProfileScreenModel()
     
+    var nickName: String {
+        get {
+            model.nickName
+        }
+        set(newValue) {
+            model.nickName = newValue
+        }
+    }
+    
+    var id: String {
+        get {
+            model.id
+        }
+        set (newValue) {
+            model.id = newValue
+        }
+    }
+    
     var birthDateValue: Date {
         get {
             model.birthDateValue
         }
         set (newValue) {
             model.birthDateValue = newValue
-            changeFieldsValues(fieldType: "Дата рождения", newValue: convertDate(date: newValue))
+            model.birthDateText = convertDate(date: newValue)
         }
     }
     
-    var birthDateText: String? {
+    var birthDateText: String {
         get {
             model.birthDateText
         }
@@ -28,7 +46,7 @@ class ProfileScreenViewModel: ObservableObject {
             model.emailText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "E-mail", newValue: newValue)
+            model.emailText = newValue
         }
     }
     
@@ -37,7 +55,7 @@ class ProfileScreenViewModel: ObservableObject {
             model.avatarLinkText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Ссылка на аватарку", newValue: newValue)
+            model.avatarLinkText = newValue
         }
     }
     
@@ -46,7 +64,7 @@ class ProfileScreenViewModel: ObservableObject {
             model.nameText
         }
         set (newValue) {
-            changeFieldsValues(fieldType: "Имя", newValue: newValue)
+            model.nameText = newValue
         }
     }
     
@@ -61,7 +79,7 @@ class ProfileScreenViewModel: ObservableObject {
     
     var areFilledFields: Bool {
         get {
-            model.areFilledFields
+            areFilled()
         }
         set (newValue) {
             model.areFilledFields = newValue
@@ -77,14 +95,18 @@ class ProfileScreenViewModel: ObservableObject {
         }
     }
     
-    func changeFieldsValues(fieldType: String, newValue: String) -> Void {
-        model.changeFieldsValues(fieldType: fieldType, text: newValue)
+//    func changeFieldsValues(fieldType: String, newValue: String) -> Void {
+//        model.changeFieldsValues(fieldType: fieldType, text: newValue)
+//    }
+    
+//    func setSex(gender: String) -> Void {
+//        changeFieldsValues(fieldType: gender, newValue: "blahblahblah")
+//    }
+    
+    func areFilled() -> Bool {
+        return !(model.emailText.isEmpty || model.nameText.isEmpty || model.birthDateText.isEmpty)
     }
     
-    func setSex(gender: String) -> Void {
-        changeFieldsValues(fieldType: gender, newValue: "blahblahblah")
-    }
-
     func convertDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YY"

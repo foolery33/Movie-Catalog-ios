@@ -3,7 +3,7 @@ import SwiftUI
 struct DatePickerView: View {
     
     @Binding var dateValue: Date
-    @Binding var dateText: String?
+    @Binding var dateText: String
     let placeholderText: String
     let isNecessary: Bool
     
@@ -12,7 +12,7 @@ struct DatePickerView: View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 8).stroke(Color.strokeColor, lineWidth: 1).frame(height: 43).padding([.leading, .trailing], 0.3)
             HStack {
-                if(dateText == nil) {
+                if(dateText.isEmpty) {
                     HStack(spacing: 0) {
                         Text(placeholderText)
                             .padding(.leading, 16)
@@ -26,7 +26,7 @@ struct DatePickerView: View {
                     }
                 }
                 else {
-                    Text(dateText!)
+                    Text(dateText)
                         .foregroundColor(.redColor)
                         .font(.system(size: 14, weight: .regular))
                         .padding([.top, .bottom], 13)
@@ -49,7 +49,7 @@ struct DatePickerView: View {
 
 struct DatePickerView_Previews: PreviewProvider {
     @State static var dateValue = Date()
-    @State static var dateText: String? = ""
+    @State static var dateText: String = ""
     static var previews: some View {
         DatePickerView(dateValue: $dateValue, dateText: $dateText, placeholderText: "Date", isNecessary: true)
     }

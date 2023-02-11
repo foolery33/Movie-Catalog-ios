@@ -14,7 +14,7 @@ struct RegisterScreenModel {
     var nameText: String = ""
     var passwordText: String = ""
     var confirmPasswordText: String = ""
-    var birthDateText: String? = nil
+    var birthDateText: String = ""
     var birthDateValue: Date = Date.now
     var sexText: Int? = nil
     var areFilledFields: Bool = false
